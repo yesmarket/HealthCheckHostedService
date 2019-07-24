@@ -18,7 +18,6 @@ namespace HealthCheckExtensions
         // The token is cancelled when the handler is instructed to stop.
         private CancellationTokenSource _cts = new CancellationTokenSource();
 
-        // This is the task started for the purpose of exporting metrics.
         private Task _task;
 
         public HealthCheckServer(
@@ -50,7 +49,7 @@ namespace HealthCheckExtensions
         public HealthCheckServer Start()
         {
             if (_task != null)
-                throw new InvalidOperationException("The metric server has already been started.");
+                throw new InvalidOperationException("The health-check server has already been started.");
 
             _task = StartServer(_cts.Token);
             return this;
@@ -132,7 +131,7 @@ namespace HealthCheckExtensions
                         }
                         catch (Exception ex) when (!(ex is OperationCanceledException))
                         {
-                            Trace.WriteLine($"Error in MetricsServer: {ex}");
+                            Trace.WriteLine($"Error in HealthCheckServer: {ex}");
 
                             try
                             {
