@@ -9,7 +9,7 @@
     <NeutralLanguage>en</NeutralLanguage>
     <Authors>Ryan Bartsch</Authors>
     <Product />
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <RootNamespace>HealthCheckExtensions</RootNamespace>
   </PropertyGroup>
 
