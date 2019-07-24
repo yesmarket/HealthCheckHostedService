@@ -11,22 +11,25 @@ namespace HealthCheckExtensions
         private readonly HealthCheckService _healthCheckService;
         private readonly int _port;
         private readonly string _url;
+        private readonly bool _useHttps;
         private HealthCheckServer _healthCheckServer;
 
         public HealthCheckHostedService(
             int port,
-            string url,
-            HealthCheckService healthCheckService)
+            HealthCheckService healthCheckService,
+            string url = "/health",
+            bool useHttps = false)
         {
             _port = port;
             _url = url;
+            _useHttps = useHttps;
             _healthCheckService = healthCheckService;
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
             Console.Out.WriteLine("Starting health-check server...");
-            _healthCheckServer = new HealthCheckServer(_port, _healthCheckService, _url);
+            _healthCheckServer = new HealthCheckServer(_port, _healthCheckService, _url, _useHttps);
             _healthCheckServer.Start();
             Console.Out.WriteLine("Health-check server started");
 
