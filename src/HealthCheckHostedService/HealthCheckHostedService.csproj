@@ -10,6 +10,7 @@
     <Authors>Ryan Bartsch</Authors>
     <Product />
     <Version>0.0.1</Version>
+    <RootNamespace>HealthCheckExtensions</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
